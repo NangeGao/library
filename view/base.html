@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+  <title>图书馆</title>
+  <link rel="icon" href="">
+  <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="/rss.html">
+  <meta name="keywords" content="图书馆,lib,library">
+  <meta name="description" content="图书馆">
+  <meta name="referrer" content="no-referrer">
+  {%- block headers %}{% endblock -%}
+  <link rel="stylesheet" href="http://lib.baomitu.com/uikit/3.0.0-beta.42/css/uikit.min.css" type="text/css">
+  <link rel="stylesheet" href="/static/css/styles.css" type="text/css">
+</head>
+<body>
+  <nav class="uk-navbar-container header" uk-navbar>
+    <div class="uk-navbar-left">
+      <a class="uk-navbar-item uk-logo" href="#">Library</a>
+      <ul class="uk-navbar-nav">
+        <li>
+          <a href="/search">
+            <span class="uk-icon uk-margin-small-right" uk-icon="icon: search"></span>
+            Search
+          </a>
+        </li>
+        <li>
+          <a href="/upload">
+            <span class="uk-icon uk-margin-small-right" uk-icon="icon: upload"></span>
+            Upload
+          </a>
+        </li>
+      </ul>
+      <div class="uk-navbar-item">
+        <div><a href="/search">Search</a></div>
+        <div><a href="/grab">Grab</a></div>
+      </div>
+    </div>
+    <div class="uk-navbar-right">
+      <div class="uk-navbar-item">
+        <form action="javascript:void(0)">
+          <input class="uk-input uk-form-width-small" type="text" placeholder="Input">
+          <button class="uk-button uk-button-default">Button</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+  <div class="uk-container main">
+    {% block main %}
+    {% endblock %}
+  </div>
+
+  <div class="uk-container uk-text-center">
+    Copyright &copy; 2018
+  </div>
+
+  <script src="http://lib.baomitu.com/jquery/2.2.4/jquery.min.js"></script>
+  <script src="http://lib.baomitu.com/uikit/3.0.0-beta.42/js/uikit.min.js"></script>
+  <script src="http://lib.baomitu.com/uikit/3.0.0-beta.42/js/uikit-icons.min.js"></script>
+  <script src="http://lib.baomitu.com/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
+  {% block script %}
+  {% endblock %}
+</body>

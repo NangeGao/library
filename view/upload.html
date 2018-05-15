@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block main %}
+  <div class="uk-container uk-margin-medium uk-text-center">
+    <h2>{{ title }}</h2>
+    <form action="/upload" enctype='multipart/form-data' method="post">
+      <input class="uk-input uk-form-width-large" name="keyword" type="text" placeholder="请输入书籍名称">
+      <input type="file" class="uk-input uk-form-width-large" name="file">
+      <input type="submit" class="uk-button uk-button-primary" id="">提交</button>
+    </form>
+
+  </div>
+{% endblock %}
+
+{% block script %}
+  <script>
+    $("#grab").on("click", function(){
+      var keyword = $("#keyword").val();
+      if (!keyword) {
+        UIkit.notification('<span uk-icon="icon: warning; ratio: 2"></span> 请输入书名', "danger");
+        return;
+      }
+
+      location.href = `${location.origin}${location.pathname}?keyword=${keyword}`;
+    });
+  </script>
+{% endblock %}

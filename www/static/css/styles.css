@@ -1,0 +1,17 @@
+/* Extra styles */
+.header {
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+}
+.main {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  min-height: calc(100vh - 150px);
+}
+
+.uk-notification-message {
+  background: #fed;
+}
+.book_info {
+  text-align: left;
+  font-size: 90%;
+}

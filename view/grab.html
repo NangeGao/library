@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block main %}
+  <div class="uk-container uk-margin-medium uk-text-center">
+    <h2>{{ title }}</h2>
+    <form action="javascript:void(0)">
+      <input class="uk-input uk-form-width-large" id="url" type="text" placeholder="请输入要抓取的URL">
+      <button class="uk-button uk-button-primary" id="grab">开始抓取</button>
+    </form>
+
+    <h1>{{book.title}}</h1>
+
+    <div class="uk-grid-medium uk-child-width-1-2@m uk-margin" uk-grid>
+      {% set arr = [1,2,3,4,5] %}
+      {% for i in arr %}
+      <div>
+        <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid>
+          <div class="uk-flex uk-flex-middle">
+            <img src="{{book.pic}}" alt="">
+          </div>
+          <div>
+            <div class="uk-card-body">
+              <h3 class="uk-card-title">{{book.name}}</h3>
+              <p class="book_info">{{book.info | safe}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+
+    </div>
+  </div>
+{% endblock %}
+
+{% block script %}
+  <script>
+    $("#grab").on("click", function(){
+      var url = $("#url").val();
+      if (!url) {
+        UIkit.notification('<span uk-icon="icon: warning; ratio: 2"></span> 请输入要抓取的URL', "danger");
+        return;
+      }
+
+      location.href = `${location.origin}${location.pathname}?url=${url}`;
+    });
+  </script>
+{% endblock %}

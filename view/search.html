@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block main %}
+  <div class="uk-container uk-margin-medium uk-text-center">
+    <h2>{{ title }}</h2>
+    <form action="javascript:void(0)">
+      <input class="uk-input uk-form-width-large" id="keyword" type="text" placeholder="请输入书籍名称">
+      <button class="uk-button uk-button-primary" id="grab">搜 索</button>
+    </form>
+
+    <h1>{{book.title}}</h1>
+
+    <div class="uk-grid-medium uk-child-width-1-2@m uk-margin" uk-grid>
+      {% for book in list %}
+      <div>
+        <div class="uk-card uk-card-default uk-card-hover uk-grid-collapse uk-child-width-1-3@s uk-margin" uk-grid>
+          <div class="uk-flex uk-flex-middle">
+            <img src="{{book.pic}}" alt="">
+          </div>
+          <div>
+            <div class="uk-card-body">
+              <h3 class="uk-card-title">{{book.title}}</h3>
+              <p class="book_info">
+                作者：{{book.author_name}}
+                <br />
+                出版日期：{{book.author_name}}
+                <br />
+                豆瓣链接：<a href="{{book.url}}" target="_blank">{{book.url}}</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+
+    </div>
+  </div>
+{% endblock %}
+
+{% block script %}
+  <script>
+    $("#grab").on("click", function(){
+      var keyword = $("#keyword").val();
+      if (!keyword) {
+        UIkit.notification('<span uk-icon="icon: warning; ratio: 2"></span> 请输入书名', "danger");
+        return;
+      }
+
+      location.href = `${location.origin}${location.pathname}?keyword=${keyword}`;
+    });
+  </script>
+{% endblock %}
